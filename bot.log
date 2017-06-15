@@ -1,0 +1,355 @@
+var Discord = require("discord.js");
+/*var Weather = require("weather.js");
+var forecast = require("forecast.js");
+var current = require("current.js");
+var converters = require("converters.js");*/
+
+
+var bot= new Discord.Client();
+
+
+//ready
+
+bot.on("ready", function() {
+		console.log("Bot Online and Ready! The bot is online on " + bot.servers.length  + " servers which are " + bot.servers + "." + '\n' + '\n' + "Admin Commands:" + '\n' + "/serverlist");
+
+	});
+
+bot.on("ready", () => {
+ bot.setPlayingGame("use /help");
+})
+
+	/*
+bot.on("ready", function() {
+for(var server of bot.servers){
+        bot.sendMessage(server, "Bot is online!");
+}
+    });
+	*/
+
+//math
+
+bot.on("message", function(message){
+
+	var i;
+	var v=0;
+	var Vparse = message.content.toUpperCase();
+	var p=parseInt(Vparse);
+    var Vres = Vparse.substring(Vparse.length, Vparse.length-1);
+
+	if(Vres === "]" && p > 0 ){
+		for(i = 1; i <= p; i++){
+		var v=v+i;
+		}
+		bot.sendMessage(message, "The sum of 1 to " + p + " is: " + v +'\n');
+
+	}
+
+})
+
+bot.on("message", function(message) {
+	var Vstr = message.content.toUpperCase();
+    var Vn = Vstr.search("X");
+	var Vm = Vstr.search("!");
+		if (Vm > 0 && Vn > 0){
+			var VfirstInt=Vstr.substring(0,Vn);
+			var VscndInt=Vstr.substring(Vn+1,Vm);
+			var Vresult=VfirstInt * VscndInt;
+
+	var Vconstant = "The multiplication of " + VfirstInt + " with " + VscndInt + " is " + Vresult;
+
+
+	}
+
+	Vn = Vstr.search("T");
+		if (Vm > 0 && Vn > 0){
+			VfirstInt=Vstr.substring(0,Vn);
+			VscndInt=Vstr.substring(Vn+1,Vm);
+			var Vparseone = parseInt(VfirstInt);
+			var Vparsetwo = parseInt(VscndInt);
+			Vresult=Vparseone + Vparsetwo;
+
+	Vconstant = "The sum of " + VfirstInt + " with " + VscndInt + " is " + Vresult;
+
+
+	}
+
+	Vn = Vstr.search("-");
+		if (Vm > 0 && Vn > 0){
+			VfirstInt=Vstr.substring(0,Vn);
+			VscndInt=Vstr.substring(Vn+1,Vm);
+			Vresult=VfirstInt - VscndInt;
+
+	Vconstant = "The substraction of " + VfirstInt + " with " + VscndInt + " is " + Vresult;
+
+
+	}
+
+	Vn = Vstr.search("/");
+		if (Vm > 0 && Vn > 0){
+			VfirstInt=Vstr.substring(0,Vn);
+			VscndInt=Vstr.substring(Vn+1,Vm);
+			Vresult=VfirstInt / VscndInt;
+
+	Vconstant = "The division of " + VfirstInt + " with " + VscndInt + " is " + Vresult;
+
+
+	}
+
+	Vn = Vstr.search("P");
+		if (Vm > 0 && Vn > 0){
+			VfirstInt=Vstr.substring(0,Vn);
+			VscndInt=Vstr.substring(Vn+1,Vm);
+			Vparseone = parseInt(VfirstInt);
+			Vparsetwo = parseInt(VscndInt);
+			Vresult=Math.pow(Vparseone,Vparsetwo)
+
+	Vconstant = "The power of " + VfirstInt + " to " + VscndInt + " is " + Vresult;
+
+
+	}
+
+	if (Vresult >= 0 || Vresult < 0){
+	bot.sendMessage(message, Vconstant);
+	}
+
+
+})
+
+	//server new number
+
+bot.on("serverNewMember", function(server, user){
+    var Amessages = ['Hope you have fun in here!', 'Hope you enjoy!', 'Hello!'];
+    bot.sendMessage(server.defaultChannel, "Welcome to " + server.name + ", " + user.mention() + ". " + Amessages[Math.floor(Math.random() * Amessages.length)]);
+
+});
+
+
+	//console log
+
+
+	/*
+bot.on("message", function(message){
+
+	var Vinput = message.content.toUpperCase();
+	var Vbait = Vinput.search(/BOK|YARRAK|YARAK|FVCK|SIKTIR|GÖT|SIKER|OROSPU|YAVSAK|YAVŞAK|PIÇ|OÇ|FUCK|DÖL|BITCH|SLUT|CUM||COCK|ZIKEM|SHIT/);
+	var Auser =[];
+			if(Vbait>=0){
+				//console.log(message.author);
+				Auser.unshift(message.author.username + ", " + message.author.typing.channel.server.name + ", " + message.author.typing.channel.name + ", " + Date());
+				console.log(Auser);
+				}
+
+})
+*/
+
+// + ", " +
+/*
+bot.on("message", function(message){
+
+	if (message.author.typing.channel.name=="general"){
+		console.log(message.author.username + ": "+message.content);
+
+	}
+
+
+
+
+})*/
+
+
+	//mains
+
+bot.on("message", function(message)
+
+{
+
+	//variables
+
+	var Vinput = message.content.toUpperCase();
+	var Vd = new Date();
+	var VDay = Vd.getDate();
+	var VMonth = Vd.getMonth() + 1;
+	var VYear = Vd.getFullYear();
+	const now = require('performance-now');
+	//var map = new google.maps.Map();
+	//gkey: AIzaSyBekRBVPu6ZxlV_c-8B3H4t7i9j8ZdBWk4
+
+	//ytubekey:AIzaSyBgLXf_POIRb7EvHUPbd_NRd8ab-Tk4u7U
+
+	//https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js
+
+
+	//openweathermap: 69a428c22191f083669211170fec429c
+
+	//TBC
+
+
+
+
+	// general messages
+
+	if(Vinput === "HI"){
+		bot.reply(message, "Hey whaddup!");
+	}
+
+
+	if(Vinput === "POTATO"){
+		bot.sendMessage(message, "my meister");
+	}
+
+	//if(message.content.length > 666){
+		//bot.reply(message, "stop writing long sentences. It has already passed 666 character!");}
+
+if (message.content.startsWith("/ping")) {
+    var startTime = now();
+    message.channel.sendMessage("Pong!")
+        .then(message => {
+            var endTime = now();
+            return message.edit(`Pong! ${(endTime - startTime).toFixed(3)} ms.`);
+        }).catch(console.error);
+}
+//
+
+	//google search
+	if (Vinput.indexOf("/GOOGLE ") === 0) {
+    var VsearchQuery = encodeURI(Vinput.substring(8))
+    var Vurl = "https://www.google.com.tr/search?site=&source=hp&q=" + VsearchQuery;
+    bot.sendMessage(message, Vurl);
+}
+
+if (Vinput.indexOf("/WEATHER ") === 0) {
+    VsearchQuery = encodeURI(Vinput.substring(9))
+    Vurl = "https://www.yr.no/place/" + VsearchQuery;
+    bot.sendMessage(message, Vurl);
+}
+
+
+	// math related
+
+
+	if(message.content === "/roll"){
+	bot.reply(message, Math.floor(Math.random() * 101));
+	}
+
+	if(Vinput === "PI"){
+		bot.sendMessage(message, Math.PI);
+	}
+
+	//useful
+
+	if (Vinput === "/USERINFO") {
+            var user = message.mentions[0];
+        if(user == null){
+            user = message.sender;
+        }
+    message.reply("\n" + "`Name:` " + user.name + "\n" + "`ID:` " + user.id + "\n" + "`Discriminator:` " + user.discriminator + "\n"+ "`Avatar:` " + user.avatarURL);
+    }
+
+
+
+	if (Vinput === "/SERVERLIST"){
+		bot.reply(message, "Bot Online and Ready! The bot is online on " + bot.servers.length  + " number of servers");
+	}
+
+	if (Vinput === "/GETDATE"){
+		bot.sendMessage(message, "Today is " + VDay +  "/" + VMonth + "/" + VYear);
+	}
+
+	if(Vinput === "/LENNYFACE"){
+	bot.sendFile(message,"http://orig06.deviantart.net/42d4/f/2014/341/5/0/_lennyface__by_romenx-d890etz.gif");
+	}
+
+	if(Vinput === "/BURN"){
+	bot.sendFile(message,"http://weknowmemes.com/wp-content/uploads/2012/09/apply-cold-water-to-the-burned-area.jpeg");
+	}
+
+	if(Vinput === "/DATBOI"){
+		bot.sendMessage(message, "oh shit whaddup " + '\n' + "http://pixel.nymag.com/imgs/daily/following/2016/05/12/12376681_1063072477089016_3145722177588178860_n.nocrop.w536.h2147483647.2x.jpg");
+	}
+
+	if(Vinput === "/LULZ"){
+	bot.sendFile(message,"https://cdn.discordapp.com/attachments/198794129268932608/223175749551652864/parrot.gif");
+	}
+
+	if(Vinput === "/GOTKILI"){
+	bot.sendFile(message,"https://scontent-cdg2-1.xx.fbcdn.net/t31.0-8/13925575_230470814015788_9204032762754266662_o.jpg");
+	}
+
+	if(Vinput === "/TRIGGERED"){
+	bot.sendFile(message,"http://i3.kym-cdn.com/photos/images/newsfeed/000/880/932/474.gif");
+	}
+
+	if(Vinput === "/GELDIYINE"){
+	bot.sendFile(message,"https://karikaturistan.files.wordpress.com/2012/09/geldi_yine_tipini_yigit_ozgur.jpg");
+	}
+
+	if(Vinput === "/HARAM"){
+	bot.sendFile(message,"https://store.donanimhaber.com/8e/8f/29/8e8f29df5576823626189156f04cdbbe.jpg");
+	}
+
+	if(Vinput === "/ABSOLUTELY"){
+	bot.sendFile(message,"http://i0.kym-cdn.com/entries/icons/original/000/020/546/7e7.jpg");
+	}
+
+	if(Vinput === "/GOODGOY"){
+	bot.sendFile(message,"https://pbs.twimg.com/profile_images/601146025185812480/CvUXCZsq.png");
+	}
+
+	if(Vinput === "/SIKIN"){
+	bot.sendFile(message,"http://galeri8.uludagsozluk.com/412/sikin_844766.jpg");
+	}
+
+	if(Vinput === "/BAKSURDAN"){
+	bot.sendFile(message,"http://imgim.com/3646inciy8155103.jpg");
+	}
+
+	if(Vinput === "/THEMORE"){
+	bot.sendFile(message,"https://media1.giphy.com/media/Y2nbrJyAR6RiM/200_s.gif");
+	}
+
+
+
+	//help
+
+	if(message.content === "/help"){
+		bot.sendMessage(message, "`hi` for warm welcome," + '\n' + "`/roll` for random number from 0 to 100," + '\n' + "`/getdate` gives current date," + '\n' + "`potato`," + '\n' + "`/help maths` opens math helps," + '\n' + "`/help memes` opens meme helps," + '\n' + "`/help weather` opens weather helps," + '\n' + "`/help comics` opens comic helps," + '\n' + "`/ping` for pong!.");
+	}
+
+	if(message.content === "/help memes"){
+		bot.sendMessage(message,"`/triggered` for your triggers," + '\n' + "`/goodgoy`," + '\n' + "`/lulz` for party parrot," + '\n' + "`/haram`," + '\n' + "`/absolutely` haram," + '\n' + "`/themore` when you learn," + '\n' + "`/datboi` oh shit whaddup," + '\n' + "`/burn` apply cold water meme," + '\n' + "`/gotkili`," + '\n' + "`/baksurda` siktir git" + '\n' + "`/sikin`," + '\n' + "`/lennyface` lennyface reply," + '\n' + "`/geldiyine` tipini.");
+	}
+
+	if(message.content === "/help comics"){
+		bot.sendMessage(message, "`/hunili` Yigit Ozgur hunili comics")
+	}
+
+	if(message.content === "/help weather"){
+		bot.sendMessage(message,"Welcome to the weather help!" + '\n' + '\n' + "To find your cities' weather please type:" + '\n' + '\n' + "`/weather country/cityname/cityname/`" + '\n' + '\n' + "Only exception is: `/weather amsterdam`" + '\n' + '\n' + "For USA: `/weather USA/StateName/CityName`" + '\n' + '\n' + "If your city has 2 words in it please use '_' e.g.`/weather USA/Oklahoma/Oklahoma_city` or `/weather Turkey/Istanbul/Istanbul`")
+	}
+	if(message.content === "/help maths"){
+		bot.sendMessage(message,"`Num1xNum2!` multiplies," + '\n' + "`Num1/Num2!` divides," + '\n' + "`Num1tNum2!` adds," + '\n' + "`Num1-Num2!` subtracts," + '\n' + "`Num1pNum2!` power.")
+	}
+	//comics
+
+	var Ahunili = [
+	'http://cf.kizlarsoruyor.com/a21048/790c7da8-38ab-4d61-bb0a-cfa7578137fe.jpg', 'http://2.bp.blogspot.com/-2u9sE6oyous/UXGhaqre5KI/AAAAAAAAE-E/ZhV9psW-7l4/s400/%25C3%25BCst%25C3%25BC+kals%25C4%25B1n.jpg' , 'https://aklidengesiz.files.wordpress.com/2012/11/hunililer-4.png', 'http://cf.kizlarsoruyor.com/a21048/c7cf9706-e3c0-41a2-a48d-7822061e7762.jpg', 'https://aklidengesiz.files.wordpress.com/2012/11/hunililer-21.jpg', 'https://s-media-cache-ak0.pinimg.com/564x/85/ff/96/85ff96a9b093e13f2f7c79db13175ac9.jpg', 'http://cf.kizlarsoruyor.com/a21048/2e5c9df6-1ee4-4631-b015-dd31907e1d0f.jpg', 'https://aklidengesiz.files.wordpress.com/2012/11/hunililer-25.jpeg', 'http://cf.kizlarsoruyor.com/a21048/1cfab783-5e7b-4cde-a5e1-76938ee7dd62.jpg', 'https://s-media-cache-ak0.pinimg.com/736x/a9/3b/22/a93b22be2854a91a8088e51492b2bdba.jpg', 'https://s-media-cache-ak0.pinimg.com/736x/e2/4d/8a/e24d8a8c214d479a8a91c80ad9f10976.jpg', 'https://aklidengesiz.files.wordpress.com/2012/11/hunililer-16.jpg', 'http://67.media.tumblr.com/e4977cd1522a54c19fadf13ea9446be9/tumblr_nr87k4gclS1u89c5no1_500.jpg', 'http://cf.kizlarsoruyor.com/a21048/1f36b8de-3c1c-4c23-a3bd-ca8092de94bd.jpg', 'https://s.instela.com/m/hunililer-birligi--i544621.jpg', 'https://s-media-cache-ak0.pinimg.com/236x/99/3e/10/993e10db9ffd18fd852c62f72893b67b.jpg', 'https://pbs.twimg.com/media/Bm44dGiIAAAf2AM.jpg', 'https://aklidengesiz.files.wordpress.com/2012/11/hunililer-1.jpeg', 'https://aklidengesiz.files.wordpress.com/2012/11/hunililer-22.jpg', 'https://67.media.tumblr.com/6187fc374f9619f37d3268341ba1b404/tumblr_o1w01viKnd1qh1l0jo1_400.jpg', 'https://s-media-cache-ak0.pinimg.com/236x/8d/37/54/8d37541dcf5c27862850e5b4f9b35886.jpg', 'https://s-media-cache-ak0.pinimg.com/564x/7a/8e/d6/7a8ed6153e9b422f9f4f435a32f45bd6.jpg', 'https://s-media-cache-ak0.pinimg.com/564x/83/8b/b1/838bb151b33feb12a7ffacd02ea35bec.jpg', 'https://s-media-cache-ak0.pinimg.com/564x/45/39/b9/4539b9f0bb84d2f3d14b8c4ad5bdc9c5.jpg', 'https://s-media-cache-ak0.pinimg.com/736x/02/0f/d7/020fd712e3a03fde40bbe14f80a04259.jpg', 'http://www.uykusuzdukkan.com.tr/class/INNOVAEditor/assets/hunililer/neanlation.jpg', 'https://aklidengesiz.files.wordpress.com/2012/11/hunililer-18.jpg', 'https://aklidengesiz.files.wordpress.com/2012/11/hunililer-11.jpg', 'https://s-media-cache-ak0.pinimg.com/736x/0f/a2/45/0fa2452206bb1e816161c14bea7e2648.jpg', 'http://www.uykusuzdukkan.com.tr/class/INNOVAEditor/assets/hunililer/150.jpg', 'http://67.media.tumblr.com/fe06d59ed0b8ea5609871f6fdd5a34ce/tumblr_o2lhdvQyqV1uqvf2yo1_500.png', 'https://aklidengesiz.files.wordpress.com/2012/11/hunililer-26.jpg', 'https://karikaturella.files.wordpress.com/2015/09/fa5cd-10809632_1700211160214226_139468579_n.jpg?w=768', 'http://turkagram.com/wp-content/uploads/2015/12/Yilbasinda-ben.-Temsili-mi-Degil-happynewyear-yilbasi-hunililer-2016.jpg', 'https://s-media-cache-ak0.pinimg.com/236x/f7/5d/7c/f75d7c41d40f9820443afb354eb403ad.jpg', 'http://www.uykusuzdukkan.com.tr/class/INNOVAEditor/assets/hunililer/93.jpg', 'https://scontent.cdninstagram.com/hphotos-xaf1/t51.2885-15/s640x640/sh0.08/e35/12301203_491183047721087_545914615_n.jpg', 'http://www.uykusuzdukkan.com.tr/class/INNOVAEditor/assets/hunililer/69.jpg', 'http://67.media.tumblr.com/2a4684653f6ad5dc41d59f9fa5d9d94a/tumblr_o2ugl76mj81s42ruuo1_500.jpg', 'https://s-media-cache-ak0.pinimg.com/736x/70/f6/89/70f6894d035439f89de69abb7db880fb.jpg', 'https://aklidengesiz.files.wordpress.com/2012/11/hunililer-12.jpg', 'http://cf.kizlarsoruyor.com/a21048/3ed64205-29af-491b-9e07-4c538f3de3e9.jpg', 'https://pbs.twimg.com/media/CaUFUq_UAAEZqGu.jpg', 'https://s-media-cache-ak0.pinimg.com/564x/9c/e5/15/9ce515df64291d86424422e15a08ebc0.jpg', 'http://galeri2.uludagsozluk.com/370/uludag-sozluk-hunililer-birligi_412749_m.jpg', 'https://s-media-cache-ak0.pinimg.com/564x/ec/62/34/ec62348da1d80485e734632e4b2279cf.jpg', 'https://scontent.cdninstagram.com/hphotos-xap1/t51.2885-15/s320x320/e15/11313468_376534202539945_749882611_n.jpg', 'https://scontent.cdninstagram.com/hphotos-xpt1/t51.2885-15/s320x320/e35/11357520_840430299404287_922982160_n.jpg', 'http://www.canol.org/wp-content/uploads/2013/07/944453_618249274865432_1000716078_n.jpg', 'https://s-media-cache-ak0.pinimg.com/564x/9f/65/bd/9f65bda566171cf401d5a94944a032c7.jpg', 'http://1.bp.blogspot.com/-rnRp_Hx0UWA/Ut1UbYnFIAI/AAAAAAAAAXU/W_opEdH1SxI/s1600/hunili+karikatur+gonderdigim+coraplar+ayagina+uydu+mu.jpg', 'http://i4.ofpof.com/content/kwtpx0l65g/gallery/_780x571-wvqevr2ip9.jpg', 'https://www.google.com.tr/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=&url=http%3A%2F%2F', 'www.inploid.com%2Fembedded%2Fimages%2Fbanka_161096.jpg&psig=AFQjCNFllBer32MUcgAhb2lOVyBjgaVMJg&ust=1470305886383280', 'https://scontent.cdninstagram.com/t51.2885-15/s320x320/e15/12224631_1644405355822938_1454216628_n.jpg?ig_cache_key=MTEzODUwNDg2MDA4OTY2Nzg4NQ%3D%3D.2', 'http://www.canol.org/wp-content/uploads/2013/07/1044484_618239454866414_2103856119_n.jpg', 'http://4.bp.blogspot.com/-D5igdWXRYUc/UBnIDBxYqKI/AAAAAAAADm0/a_3bsl24wqg/s400/Kilodumu+%C3%96zledim.jpg', 'http://66.media.tumblr.com/b74f8c8e9fe0aa216eec082e6657b270/tumblr_o66w85aFNR1sajjsgo1_500.jpg', 'https://img.bestofinsta.org/t51.2885-15/s320x320/e35/12976193_211955322522409_609613844_n.jpg?ig_cache_key=MTIzNzc5NDI4NTE0NzE4OTUwNQ%3D%3D.2', 'http://i4.ofpof.com/content/p2rkic36ww/gallery/_780x767-j1rlrdnwi1.jpg', 'http://www.turktime.com/galeri_photo/radE8BC4.jpg', 'https://pbs.twimg.com/media/CjzuP8OUgAA_WXn.jpg', 'https://kidim2013.files.wordpress.com/2013/10/yasam_kocu_03.jpg', 'http://www.enyenikarikaturler.com/portal/wp-content/uploads/2012/08/rer%C3%B6vizyon-%C5%9Fark%C4%B1-yar%C4%B1%C5%9Fmas%C4%B1.jpg', 'http://66.media.tumblr.com/d359cb62c077f6ebfad07341d5a1b43e/tumblr_o2xt05CiaY1ts3lnxo1_500.jpg', 'http://www.enyenikarikaturler.com/portal/wp-content/uploads/2012/08/sonunda-ben-de-kapand%C4%B1m-veli-abi.jpg', 'http://scontent-sjc2-1.cdninstagram.com/t51.2885-15/e35/13402374_1179225868815452_1289412508_n.jpg?ig_cache_key=MTI4MDAzMjQ0Mjc4MjUzNjg1OA%3D%3D.2', 'https://karikaturkutur.files.wordpress.com/2016/02/1efbluwt9b0pwy96hjhzndjkp7auz_l8ngwaek8erldxdje2zjkx_lq9h_9us9hz-sitoe0xzycrcuucnepowhgpyrcj5xbzlxg0smhsu7-jh9izpgpquvr4zlq_ltnrp5-gw399-h330-nc.jpeg', 'http://galeri.uludagsozluk.com/56/hunili-karikat%C3%BCrler_88279.jpg', 'https://scontent-ams3-1.cdninstagram.com/t51.2885-15/s480x480/e35/12750352_532766516899577_349984295_n.jpg?ig_cache_key=MTE5MjE3NTE4NDQyNTIxMDMwNQ%3D%3D.2', 'https://scontent-ams3-1.cdninstagram.com/t51.2885-15/s480x480/e35/12750156_459259270932954_1876456248_n.jpg?ig_cache_key=MTE4NTU5NDAwNDQwMTc3MDY1Nw%3D%3D.2', 'http://3.bp.blogspot.com/-UYwk0Q3ACVk/T5HIVJpmwAI/AAAAAAAACyk/vwyf4vLmTww/s400/1+(43).jpg', 'http://3.bp.blogspot.com/-D-4ZPJjmhKc/UMi4H3XuZqI/AAAAAAAAAyU/vKo_eF1cAOs/s1600/563678_10151617842543018_905789715_n.jpg', 'http://1.bp.blogspot.com/-zeHvvc2MhWQ/T7_wGwO18rI/AAAAAAAADSQ/VxCcCBZv2Uc/s1600/1+(75).jpg', 'http://1.bp.blogspot.com/-MFV4EcakSo0/T5BoRqNDMmI/AAAAAAAACx8/ZHmEbccRro0/s1600/hhhhhhhhhhhhh.jpg', 'http://cf.kizlarsoruyor.com/a21048/65e2d5d1-194a-407d-952c-96010f772bf4.jpg', 'https://66.media.tumblr.com/e7a03520d70e1bbb4cef6a2678057b3c/tumblr_o1zrzwmzZ01twn24so1_1280.png', 'https://karikaze.files.wordpress.com/2011/04/27201_378980571455_17900841455_4425604_2091281_n1.jpg'
+	];
+
+	var Vrandom = Ahunili[Math.floor(Math.random() * Ahunili.length)];
+
+	if(Vinput === "/HUNILI"){
+		bot.sendMessage(message, Vrandom);
+	}
+
+	//weather
+
+
+
+	if(Vinput === "/WEATHER AMSTERDAM"){
+		bot.sendMessage(message, "https://www.yr.no/place/Netherlands/North_Holland/Amsterdam/");
+	}
+
+})
+
+bot.login("denek.can90@gmail.com","sunal1997");
