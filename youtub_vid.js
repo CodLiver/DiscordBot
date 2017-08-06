@@ -2,7 +2,7 @@ var Discord = require("discord.js");
 var YouTube = require('youtube-node');
 var bot= new Discord.Client();
 var youTube = new YouTube();
-youTube.setKey('AIzaSyBgLXf_POIRb7EvHUPbd_NRd8ab-Tk4u7U');
+youTube.setKey('YT_TOKEN');
 
 
 bot.on("ready", () => {
@@ -42,4 +42,4 @@ bot.on("message", function(message){
 	}
 })
 
-bot.login("denek.can90@gmail.com","sunal1997");
+bot.login("TOKEN");
