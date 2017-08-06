@@ -6,7 +6,7 @@ youTube.setKey('YT_TOKEN');
 
 
 bot.on("ready", () => {
- bot.setPlayingGame("BOT IS UNAVAILABLE");
+ bot.setPlayingGame("YT Bot");
 })
 bot.on("message", function(message){
 
@@ -23,19 +23,8 @@ bot.on("message", function(message){
 	}
 	else{
 
-    var v=	[JSON.stringify(result)];
+    var v=[JSON.stringify(result)];
     bot.sendMessage(message ,"https://www.youtube.com/watch?v="+JSON.parse(v[0]).items[0].id.videoId);
-
-
-    //to dev
-
-    // var v=	[JSON.stringify(result,['videoId'])];
-    // console.log(JSON.parse(v));
-
-    //devved
-
-	// var v=	[JSON.stringify(result, ['etag'] )];
-	// console.log(JSON.parse(v[0]).etag);
 
 	}
 	})
