@@ -1,4 +1,4 @@
-# PotatoBot
+# DiscordBot
 a Discord Bot to be developed.
 
 This bot is purposed to be helpful for Discord chat moderators. Node.js npm was used (Discord.js)
